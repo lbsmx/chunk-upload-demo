@@ -51,7 +51,7 @@ export default function fileSlice(file, chunkSize, uploadFn, retry, updateFn) {
           }
         } catch (error) {
           if (retryTimes > 0) {
-            logger.log(
+            logger.error(
               `${file.name}分片${currentChunk + 1}上传失败，重试第${retry - retryTimes + 1}次`,
             )
             --retryTimes

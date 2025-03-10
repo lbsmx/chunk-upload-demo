@@ -164,14 +164,6 @@ function beforeUpload() {
   return false
 }
 
-function clearLocalStorage() {
-  localStorage.removeItem('fileMd5List')
-  ElMessage({
-    type: 'success',
-    message: '清除成功',
-  })
-}
-
 function formatSize(size) {
   const units = ['B', 'KB', 'MB', 'GB', 'TB']
   let i = 0
@@ -196,7 +188,6 @@ function getStatusLabel(status) {
 <template>
   <div class="upload-demo">
     <div class="upload-section">
-      <button class="clear-button" @click="clearLocalStorage">清除 LocalStorage</button>
       <el-upload
         class="el-upload-demo"
         name="file"
@@ -213,7 +204,7 @@ function getStatusLabel(status) {
         :before-remove="beforeRemove"
         :limit="20"
       >
-        <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+        <el-icon class="el-icon--upload"></el-icon>
         <div class="el-upload__text">Drop file here or <em>click to upload</em></div>
       </el-upload>
       <div class="file-list">
@@ -241,7 +232,7 @@ function getStatusLabel(status) {
 <style scoped>
 .upload-demo {
   display: flex;
-  width: 100%;
+  flex: 1;
   height: 100%;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -260,7 +251,7 @@ function getStatusLabel(status) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   border-right: 1px solid #ddd;
 }
 
@@ -282,18 +273,6 @@ function getStatusLabel(status) {
   padding: 10px;
   overflow-y: auto;
   background-color: #f9f9f9;
-}
-
-.clear-button {
-  margin-bottom: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 4px;
-  background-color: #dc3545;
-  color: #fff;
-  transition: background-color 0.3s;
 }
 
 .clear-button:hover {
